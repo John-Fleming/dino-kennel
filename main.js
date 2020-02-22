@@ -92,6 +92,22 @@ const petEvents = () => {
     }
 }
 
+// function that removes a dino object from the dinos array when the trash can button is clicked
+const deleteDinoEvent = (e) => {
+    const dinoId = e.target.closest('.card').id;
+    const dinoPosition = dinos.findIndex((x) => x.id === dinoId);
+    dinos.splice(dinoPosition, 1);
+    printDinos(dinos);
+}
+
+// function that adds an event listener when you click the trash can button
+const deleteEvents = () => {
+    const dinoDeleteButtons = document.getElementsByClassName('delete-dino');
+    for (let i = 0; i < dinoDeleteButtons.length; i++) {
+        dinoDeleteButtons[i].addEventListener('click', deleteDinoEvent);
+    } 
+};
+
 // function that prints the finos array, printing each dino as an individual card
 const printDinos = (dinoArray) => {
     let domString = '';
@@ -102,7 +118,8 @@ const printDinos = (dinoArray) => {
         domString +=    '<div class="card-body text-center">'
         domString +=        `<h5 class="card-title">${dinoArray[i].name}</h5>`;
         domString +=        `<p class="card-text">Health: ${dinoArray[i].health}</p>`;
-        domString +=        '<button class="btn btn-outline-dark single-dino"><i class="fas fa-eye"></i></button>';
+        domString +=        '<button class="btn btn-outline-primary mx-1 single-dino"><i class="fas fa-eye"></i></button>';
+        domString +=        '<button class="btn btn-outline-danger mx-1 delete-dino"><i class="fas fa-trash"></i></button>';
         domString +=    '</div>';
         domString +=    '</div>';
         domString +=    '</div>';
@@ -110,6 +127,7 @@ const printDinos = (dinoArray) => {
     printToDom('kennel', domString);
     singleDinoAddEvents();
     petEvents();
+    deleteEvents();
 };
 
 // function to add a new dino to the array from the form inputs
