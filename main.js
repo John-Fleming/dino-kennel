@@ -1,4 +1,4 @@
-const dinos = [4];
+const dinos = [];
 
 const newDino = (e) => {
     e.preventDefault();
@@ -14,9 +14,9 @@ const newDino = (e) => {
       }
     dinos.push(brandNewDino);
     document.getElementById('new-dino-form').reset();
+    document.getElementById('collapseOne').classList.remove('show');
     console.log('hi from newDino', dinos);
 };
-
 
 const init = () => {
     document.getElementById('submit-new-dino').addEventListener('click', newDino);
