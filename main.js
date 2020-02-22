@@ -74,13 +74,29 @@ const singleDinoAddEvents = () => {
     }
 };
 
+// function that adds one to the dino object health 
+const dinoHealth = (e) => {
+    const dinoId = e.target.closest('.card').id; 
+    const dinoPosition = dinos.findIndex((x) => x.id === dinoId); // if the current id equals the dinoId, return the indexValue and save it to dinoPosition
+    dinos[dinoPosition].health += 1;
+    printDinos(dinos);
+}
+
+// function that adds an event listener when you mouse over the picture of the dino
+const petEvents = () => {
+    const dinoPetButtons = document.getElementsByClassName('dino-photo');
+    for (let i = 0; i < dinoPetButtons.length; i++) {
+        dinoPetButtons[i].addEventListener('mouseleave', dinoHealth);
+    }
+}
+
 // function that prints the finos array, printing each dino as an individual card
 const printDinos = (dinoArray) => {
     let domString = '';
     for (let i = 0; i < dinoArray.length; i++) {
         domString +=    '<div class="col-lg-4 col-md-6">';
         domString +=    `<div id="${dinoArray[i].id}" class="card mb-3">`;
-        domString +=    `<img src="${dinoArray[i].imageUrl}" class="card-img-top" alt="picture of dino">`;
+        domString +=    `<img src="${dinoArray[i].imageUrl}" class="card-img-top dino-photo" alt="picture of dino">`;
         domString +=    '<div class="card-body text-center">'
         domString +=        `<h5 class="card-title">${dinoArray[i].name}</h5>`;
         domString +=        `<p class="card-text">Health: ${dinoArray[i].health}</p>`;
@@ -91,6 +107,7 @@ const printDinos = (dinoArray) => {
     }
     printToDom('kennel', domString);
     singleDinoAddEvents();
+    petEvents();
 };
 
 // function to add a new dino to the array from the form inputs
