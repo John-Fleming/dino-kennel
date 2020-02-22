@@ -46,13 +46,13 @@ const viewSingleDino = (e) => {
     const dinoId = e.target.closest('.card').id; // looks for the closest parent container with class name .card and saves the id value of that container to dinoId
     const selectedDino = dinos.find((currentDino) => dinoId === currentDino.id) // "find" method will loop through the specified array and return the item that meets the condition after the arrow, ending the loop. "currentDino" is a variable that is the equivalent of doing dinos[i] in a for loop
     let domString = '';
-    domString += '<button id="close-single-view" class="btn btn-outline-dark text-white"><i class="far fa-window-close"></i></button>';
     domString += '<div class="container">';
+    domString += '<button id="close-single-view" class="btn btn-outline-dark text-white float-right"><i class="far fa-window-close"></i></button>';
     domString +=     '<div class="row">';
     domString +=         '<div class="col-6">';
     domString +=             `<img class="img-fluid" src="${selectedDino.imageUrl}" alt="">`;
     domString +=         '</div>';
-    domString +=         '<div class="col-6 text-white">';
+    domString +=         '<div class="col-6 text-white text-center">';
     domString +=             `<h2>${selectedDino.name}</h2>`;
     domString +=             `<p>Type: ${selectedDino.type}</p>`;
     domString +=             `<p>Age: ${selectedDino.age}</p>`;
