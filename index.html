@@ -6,17 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dino Kennel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./main.css">
-    <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="./index.html">Dino Kennel</a>
       </nav>
     
+      <div class="col-10 offset-1 mt-5">
+        <div class="accordion" id="addDinoAccordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fas fa-plus"></i> Add Dino
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#addDinoAccordion">
+                <div class="card-body">
+                    <form id="new-dino-form" class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="dino-name">Name</label>
+                                <input type="text" class="form-control" id="dino-name" aria-describedby="nameHelp" placeholder="Enter name">
+                              </div>
+                              <div class="form-group">
+                                <label for="dino-age">Age</label>
+                                <input type="text" class="form-control" id="dino-age" aria-describedby="ageHelp" placeholder="Enter age">
+                              </div>
+                              <div class="form-group">
+                                <label for="dino-type">Type</label>
+                                <input type="text" class="form-control" id="dino-type" aria-describedby="ageHelp" placeholder="Enter type">
+                              </div>
+                            </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="dino-owner">Owner</label>
+                                <input type="text" class="form-control" id="dino-owner" aria-describedby="ownerHelp" placeholder="Enter owner name">
+                              </div>
+                              <div class="form-group">
+                                <label for="dino-image">Image</label>
+                                <input type="text" class="form-control" id="dino-image" aria-describedby="imageHelp" placeholder="Enter dino image URL">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn btn-dark btn-lg" id="submit-new-dino">Submit</button>
+                        </div>
+                      </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./main.js"></script>
 </body>
 </html>
