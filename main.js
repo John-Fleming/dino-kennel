@@ -9,7 +9,7 @@ const dinos = [{
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61fC04pumjL._AC_SL1001_.jpg'
   }, 
   {
-    id: 'dino1',
+    id: 'dino2',
     name: 'Steve',
     type: 'Velociraptor',
     age: 200,
@@ -19,7 +19,7 @@ const dinos = [{
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61fC04pumjL._AC_SL1001_.jpg'
   },
   {
-    id: 'dino1',
+    id: 'dino3',
     name: 'Sarah',
     type: 'Stegasaurus',
     age: 50,
@@ -42,9 +42,25 @@ const closeSingleViewEvent = () => {
 };
 
 // function that removes the dino cards view and replaces it with a view of a single dinosaur when the "eye" button is clicked
-const viewSingleDino = () => {
+const viewSingleDino = (e) => {
+    const dinoId = e.target.closest('.card').id; // looks for the closest parent container with class name .card and saves the id value of that container to dinoId
+    const selectedDino = dinos.find((currentDino) => dinoId === currentDino.id) // "find" method will loop through the specified array and return the item that meets the condition after the arrow, ending the loop. "currentDino" is a variable that is the equivalent of doing dinos[i] in a for loop
     let domString = '';
     domString += '<button id="close-single-view" class="btn btn-outline-dark text-white"><i class="far fa-window-close"></i></button>';
+    domString += '<div class="container">';
+    domString +=     '<div class="row">';
+    domString +=         '<div class="col-6">';
+    domString +=             `<img class="img-fluid" src="${selectedDino.imageUrl}" alt="">`;
+    domString +=         '</div>';
+    domString +=         '<div class="col-6 text-white">';
+    domString +=             `<h2>${selectedDino.name}</h2>`;
+    domString +=             `<p>Type: ${selectedDino.type}</p>`;
+    domString +=             `<p>Age: ${selectedDino.age}</p>`;
+    domString +=             `<p>Owner: ${selectedDino.owner}</p>`;
+    domString +=             `<p>Health: ${selectedDino.health}</p>`;
+    domString +=         '</div>';
+    domString +=     '</div>';
+    domString += '</div>';
     printToDom('kennel', '');
     printToDom('single-view', domString);
     document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent);
@@ -63,7 +79,7 @@ const printDinos = (dinoArray) => {
     let domString = '';
     for (let i = 0; i < dinoArray.length; i++) {
         domString +=    '<div class="col-lg-4 col-md-6">';
-        domString +=    '<div class="card mb-3">';
+        domString +=    `<div id="${dinoArray[i].id}" class="card mb-3">`;
         domString +=    `<img src="${dinoArray[i].imageUrl}" class="card-img-top" alt="picture of dino">`;
         domString +=    '<div class="card-body text-center">'
         domString +=        `<h5 class="card-title">${dinoArray[i].name}</h5>`;
