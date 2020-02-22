@@ -15,7 +15,7 @@ const dinos = [{
     age: 200,
     owner: 'John',
     adventures: [],
-    health: 100,
+    health: 80,
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61fC04pumjL._AC_SL1001_.jpg'
   },
   {
@@ -25,7 +25,7 @@ const dinos = [{
     age: 50,
     owner: 'Luke',
     adventures: [],
-    health: 100,
+    health: 70,
     imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61fC04pumjL._AC_SL1001_.jpg'
   }
 ];
@@ -74,12 +74,14 @@ const singleDinoAddEvents = () => {
     }
 };
 
-// function that adds one to the dino object health 
+// function that adds one to the dino object health key value and reprints the dino object
 const dinoHealth = (e) => {
     const dinoId = e.target.closest('.card').id; 
     const dinoPosition = dinos.findIndex((x) => x.id === dinoId); // if the current id equals the dinoId, return the indexValue and save it to dinoPosition
-    dinos[dinoPosition].health += 1;
-    printDinos(dinos);
+    if (dinos[dinoPosition].health < 100) {
+        dinos[dinoPosition].health += 1;
+        printDinos(dinos);
+    }
 }
 
 // function that adds an event listener when you mouse over the picture of the dino
